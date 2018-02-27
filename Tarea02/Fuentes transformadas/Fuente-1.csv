@@ -1,0 +1,30 @@
+id_orden,nombre_cliente,apellido_cliente,ciudad_cliente,estado/provincia_cliente,estatus_cliente,fecha_orden,id_producto,producto,precio_unitario,cantidad,descuento,precio_completo,precio_extendido,descuento_total
+10248,Suzan,Plock,Pittsburgh,Pensilvania,Silver,ene-11,11,Queso Cabrales,$14.00,12,$0.00,$168.00,$168.00,$0.00
+10248,Suzan,Plock,Pittsburgh,Pensilvania,Silver,ene-11,42,Singaporean Hokkien Fried Mee,$9.80,10,$0.00,$98.00,$98.00,$0.00
+10248,Suzan,Plock,Pittsburgh,Pensilvania,Silver,ene-11,72,Mozzarella di Giovanni,$34.80,5,$0.00,$174.00,$174.00,$0.00
+10249,Allan,Strate,Miami,Florida,Platinum,ene-11,51,Manjimup Dried Apples,$42.40,40,$0.00,"$1,696.00","$1,696.00",$0.00
+10249,Allan,Strate,Miami,Florida,Platinum,ene-11,14,Tofu,$18.60,9,$0.00,$167.40,$167.40,$0.00
+10250,Elnora,Willison,Philadelphia,Pensilvania,Platinum,ene-11,51,Manjimup Dried Apples,$42.40,35,$0.15,"$1,484.00","$1,261.40",$222.60
+10250,Elnora,Willison,Philadelphia,Pensilvania,Platinum,ene-11,41,Jack's New England Clam Chowder,$7.70,10,$0.00,$77.00,$77.00,$0.00
+10250,Elnora,Willison,Philadelphia,Pensilvania,Platinum,ene-11,65,Louisiana Fiery Hot Pepper Sauce,$16.80,15,$0.15,$252.00,$214.20,$37.80
+10251,Daniela,Becknell,Tacoma,Washington,Platinum,ene-11,65,Louisiana Fiery Hot Pepper Sauce,$16.80,20,$0.00,$336.00,$336.00,$0.00
+10251,Daniela,Becknell,Tacoma,Washington,Platinum,ene-11,22,Gustaf's Knäckebröd,$16.80,6,$0.05,$100.80,$95.76,$5.04
+10251,Daniela,Becknell,Tacoma,Washington,Platinum,ene-11,57,Ravioli Angelo,$15.60,15,$0.05,$234.00,$222.30,$11.70
+10252,Cathrine,Delamater,Philadelphia,Pensilvania,Platinum,ene-11,33,Geitost,$2.00,25,$0.05,$50.00,$47.50,$2.50
+10252,Cathrine,Delamater,Philadelphia,Pensilvania,Platinum,ene-11,20,Sir Rodney's Marmalade,$64.80,40,$0.05,"$2,592.00","$2,462.40",$129.60
+10252,Cathrine,Delamater,Philadelphia,Pensilvania,Platinum,ene-11,60,Camembert Pierrot,$27.20,40,$0.00,"$1,088.00","$1,088.00",$0.00
+10253,Leota,Vonderheide,Philadelphia,Pensilvania,Platinum,ene-11,49,Maxilaku,$16.00,40,$0.00,$640.00,$640.00,$0.00
+10253,Leota,Vonderheide,Philadelphia,Pensilvania,Platinum,ene-11,39,Chartreuse verte,$14.40,42,$0.00,$604.80,$604.80,$0.00
+10253,Leota,Vonderheide,Philadelphia,Pensilvania,Platinum,ene-11,31,Gorgonzola Telino,$10.00,20,$0.00,$200.00,$200.00,$0.00
+10254,Tyrone,Hine,Pittsburgh,Pensilvania,Gold,ene-11,55,Pâté chinois,$19.20,21,$0.15,$403.20,$342.72,$60.48
+10254,Tyrone,Hine,Pittsburgh,Pensilvania,Gold,ene-11,74,Longlife Tofu,$8.00,21,$0.00,$168.00,$168.00,$0.00
+10254,Tyrone,Hine,Pittsburgh,Pensilvania,Gold,ene-11,24,Guaraná Fantástica,$3.60,15,$0.15,$54.00,$45.90,$8.10
+10255,Christin,Tillinghast,Tacoma,Washington,Gold,ene-11,36,Inlagd Sill,$15.20,25,$0.00,$380.00,$380.00,$0.00
+10255,Christin,Tillinghast,Tacoma,Washington,Gold,ene-11,59,Raclette Courdavault,$44.00,30,$0.00,"$1,320.00","$1,320.00",$0.00
+10255,Christin,Tillinghast,Tacoma,Washington,Gold,ene-11,16,Pavlova,$13.90,35,$0.00,$486.50,$486.50,$0.00
+10255,Christin,Tillinghast,Tacoma,Washington,Gold,ene-11,2,Chang,$15.20,20,$0.00,$304.00,$304.00,$0.00
+10256,Kisha,Grauer,Salt Lake City,Utah,Silver,ene-11,53,Perth Pasties,$26.20,15,$0.15,$393.00,$393.00,$0.00
+10256,Kisha,Grauer,Salt Lake City,Utah,Silver,ene-11,77,Original Frankfurter grüne Soße,$10.40,12,$0.00,$124.80,$124.80,$0.00
+10257,Darryl,Manuelito,Charleston,South Carolina State University,Silver,ene-11,27,Schoggi Schokolade,$35.10,25,$0.00,$877.50,$877.50,$0.00
+10257,Darryl,Manuelito,Charleston,South Carolina State University,Silver,ene-11,39,Chartreuse verte,$14.40,6,$0.00,$86.40,$86.40,$0.00
+10257,Darryl,Manuelito,Charleston,South Carolina State University,Silver,ene-11,77,Original Frankfurter grüne Soße,$10.40,15,$0.00,$156.00,$156.00,$0.00

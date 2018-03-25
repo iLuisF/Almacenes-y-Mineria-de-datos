@@ -1,0 +1,82 @@
+﻿<DeploymentSnapshot xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0">
+  <Target>
+    <Database>cubo_olap</Database>
+    <Server>localhost</Server>
+    <ConnectionString>DataSource=localhost;Timeout=0</ConnectionString>
+  </Target>
+  <Options>
+    <TransactionalDeployment>false</TransactionalDeployment>
+    <PartitionDeployment>DeployPartitions</PartitionDeployment>
+    <RoleDeployment>DeployRolesRetainMembers</RoleDeployment>
+    <ProcessingOption>Default</ProcessingOption>
+    <OutputScript></OutputScript>
+    <ImpactAnalysisFile></ImpactAnalysisFile>
+    <ConfigurationSettingsDeployment>Deploy</ConfigurationSettingsDeployment>
+    <OptimizationSettingsDeployment>Deploy</OptimizationSettingsDeployment>
+    <WriteBackTableCreation>UseExisting</WriteBackTableCreation>
+  </Options>
+  <Snapshot>
+    <ObjectSnapshots>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.RelationalDataSource</Type>
+        <TimeStamp>J3kV3caO+5Y7QHZ6PeYzoXfJcl8=19/03/2018 08:24:22 p.m.19/03/2018 08:24:22 p.m.</TimeStamp>
+        <ID>
+          <String>Food Mart</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.DataSourceView</Type>
+        <TimeStamp>WmBClOeffKYtDHS+dYicygC0YXg=19/03/2018 08:45:00 p.m.19/03/2018 08:26:36 p.m.</TimeStamp>
+        <ID>
+          <String>Food Mart</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>ZhLvnuB0zCHeOEkiK4SvJd4uAds=20/03/2018 02:27:25 a.m.19/03/2018 08:56:39 p.m.</TimeStamp>
+        <ID>
+          <String>Tiempo</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>h55+MAUPI50vkus+aILAwdOAF6g=20/03/2018 03:00:31 a.m.19/03/2018 09:09:36 p.m.</TimeStamp>
+        <ID>
+          <String>Product</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>l79m3yFNz2px2ejLxwlkN5iBZFU=19/03/2018 10:04:23 p.m.19/03/2018 09:09:36 p.m.</TimeStamp>
+        <ID>
+          <String>Warehouse</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>d/6bMlM/DUSPer/uyy4wHQaM6Jo=20/03/2018 02:23:48 a.m.19/03/2018 09:09:36 p.m.</TimeStamp>
+        <ID>
+          <String>Store</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Cube</Type>
+        <TimeStamp>e5N7uq9Kh3j9MpRHmk/GakrzFyc=20/03/2018 02:49:40 a.m.19/03/2018 09:09:36 p.m.h57M5syFfosqCgm/tB062JQFeZY=19/03/2018 09:09:36 p.m.19/03/2018 09:09:36 p.m.</TimeStamp>
+        <ID>
+          <String>Food Mart</String>
+        </ID>
+      </ObjectSnapshot>
+    </ObjectSnapshots>
+    <DatabaseSnapshot>
+      <Type>Microsoft.AnalysisServices.Database</Type>
+      <TimeStamp>d/1neilp1C1h/J7fex9jyeN991o=19/03/2018 01:11:46 p.m.19/03/2018 01:11:45 p.m.</TimeStamp>
+      <ID>
+        <String>cubo_olap</String>
+      </ID>
+    </DatabaseSnapshot>
+    <Granularity>Coarse</Granularity>
+  </Snapshot>
+  <AssemblyLocations />
+  <ProcessingComplete>true</ProcessingComplete>
+  <LastDeployed>2018-03-20T09:00:34.913333Z</LastDeployed>
+</DeploymentSnapshot>

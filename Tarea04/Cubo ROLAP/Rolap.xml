@@ -1,0 +1,232 @@
+<Schema name="Inventario" description="Cubo para analizar el inventario.">
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Producto" description="Dimensi&#243;n para describir los productos.">
+    <Hierarchy name="Clase de Productos" visible="true" hasAll="true" primaryKey="product_id" primaryKeyTable="product">
+      <Join leftKey="product_class_id" rightKey="product_class_id">
+        <Table name="product" schema="public">
+        </Table>
+        <Table name="product_class" schema="public">
+        </Table>
+      </Join>
+      <Level name="Product Department" visible="true" table="product_class" column="product_department" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="Product Category" visible="true" table="product_class" column="product_category" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="Product Subcategory" visible="true" table="product_class" column="product_subcategory" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="Brand Name" visible="true" table="product" column="brand_name" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="Product Name" visible="true" table="product" column="product_name" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="Productos" visible="true" hasAll="true" primaryKey="product_id">
+      <Table name="product" schema="public">
+      </Table>
+      <Level name="Brand Name" visible="true" table="product" column="brand_name" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="Product Name" visible="true" table="product" column="product_name" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="SKU" visible="true" table="product" column="SKU" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="Propiedades de Producto" visible="true" hasAll="true" primaryKey="product_id">
+      <Table name="product" schema="public">
+      </Table>
+      <Level name="Gross Wieght" visible="true" table="product" column="gross_weight" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="Net Weight" visible="true" table="product" column="net_weight" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="Unit Per Case" visible="true" table="product" column="units_per_case" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="TimeDimension" visible="true" highCardinality="false" name="Tiempo">
+    <Hierarchy name="Calendario" visible="true" hasAll="true" primaryKey="time_id">
+      <Table name="time_by_day" schema="public">
+      </Table>
+      <Level name="The Year" visible="true" table="time_by_day" column="the_year" type="Numeric" uniqueMembers="false" levelType="TimeYears" hideMemberIf="Never">
+      </Level>
+      <Level name="Quarter" visible="true" table="time_by_day" column="quarter" type="String" uniqueMembers="false" levelType="TimeQuarters" hideMemberIf="Never">
+      </Level>
+      <Level name="The Month" visible="true" table="time_by_day" column="the_month" type="String" uniqueMembers="false" levelType="TimeMonths" hideMemberIf="Never">
+      </Level>
+      <Level name="Day of Month" visible="true" table="time_by_day" column="day_of_month" type="Numeric" uniqueMembers="false" levelType="TimeDays" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Almacen">
+    <Hierarchy name="Almacenes" visible="true" hasAll="true" primaryKey="warehouse_id" primaryKeyTable="warehouse">
+      <Join leftKey="warehouse_class_id" rightKey="warehouse_class_id">
+        <Table name="warehouse" schema="public">
+        </Table>
+        <Table name="warehouse_class" schema="public">
+        </Table>
+      </Join>
+      <Level name="Warehouse Country" visible="true" table="warehouse" column="warehouse_country" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="Warehouse State Province" visible="true" table="warehouse" column="warehouse_state_province" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="Warehouse City" visible="true" table="warehouse" column="warehouse_city" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="We Address 1" visible="true" table="warehouse" column="wa_address1" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="Warehouse Name" visible="true" table="warehouse" column="warehouse_name" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="Warehouse Description" visible="true" table="warehouse_class" column="description" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Tienda">
+    <Hierarchy name="Tiendas" visible="true" hasAll="true" primaryKey="store_id" primaryKeyTable="store">
+      <Join leftKey="region_id" rightKey="region_id">
+        <Table name="store" schema="public">
+        </Table>
+        <Table name="region" schema="public">
+        </Table>
+      </Join>
+      <Level name="Store Country" visible="true" table="store" column="store_country" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="Sales Region" visible="true" table="region" column="sales_region" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="Store State" visible="true" table="store" column="store_state" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="Store City" visible="true" table="store" column="store_city" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="Store Type" visible="true" table="store" column="store_type" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="Store Name" visible="true" table="store" column="store_name" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Cube name="Inventario" visible="true" description="Cubo para analizar el inventario." cache="true" enabled="true">
+    <Table name="inventory_fact_1998" schema="public">
+    </Table>
+    <DimensionUsage source="Producto" name="Product" visible="true" foreignKey="product_id" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Tiempo" name="Tiempo" visible="true" foreignKey="time_id" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Almacen" name="Almacen" visible="true" foreignKey="warehouse_id" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Tienda" name="Tienda" visible="true" foreignKey="store_id" highCardinality="false">
+    </DimensionUsage>
+    <Measure name="Units Ordered" column="units_ordered" datatype="Numeric" aggregator="sum" visible="true">
+      <CellFormatter>
+<Script language="JavaScript">
+<![CDATA[
+result_string = '';
+//Obtener el valor de Mondrian
+var fact = value;
+function formatDollar(num) {
+var p = num.toFixed(2).split(".");
+return "$" + p[0].split("").reverse().reduce(function(acc,num,i,orig)
+{
+return num=="-" ? acc : num + (i && !(i % 3) ? "," : "") + acc;
+}, "") + "." + p[1];
+}
+result_string = formatDollar(fact);
+return result_string;
+]]>
+</Script>
+</CellFormatter>
+    </Measure>
+    <Measure name="Units shipped" column="units_shipped" datatype="Numeric" aggregator="sum" visible="true">
+      <CellFormatter>
+<Script language="JavaScript">
+<![CDATA[
+result_string = '';
+//Obtener el valor de Mondrian
+var fact = value;
+function formatDollar(num) {
+var p = num.toFixed(2).split(".");
+return "$" + p[0].split("").reverse().reduce(function(acc,num,i,orig)
+{
+return num=="-" ? acc : num + (i && !(i % 3) ? "," : "") + acc;
+}, "") + "." + p[1];
+}
+result_string = formatDollar(fact);
+return result_string;
+]]>
+</Script>
+</CellFormatter>
+    </Measure>
+    <Measure name="Warehouse sales" column="warehouse_sales" datatype="Numeric" aggregator="sum" visible="true">
+      <CellFormatter>
+<Script language="JavaScript">
+<![CDATA[
+result_string = '';
+//Obtener el valor de Mondrian
+var fact = value;
+function formatDollar(num) {
+var p = num.toFixed(2).split(".");
+return "$" + p[0].split("").reverse().reduce(function(acc,num,i,orig)
+{
+return num=="-" ? acc : num + (i && !(i % 3) ? "," : "") + acc;
+}, "") + "." + p[1];
+}
+result_string = formatDollar(fact);
+return result_string;
+]]>
+</Script>
+</CellFormatter>
+    </Measure>
+    <Measure name="Warehouse cost" column="warehouse_cost" datatype="Numeric" aggregator="sum" visible="true">
+      <CellFormatter>
+<Script language="JavaScript">
+<![CDATA[
+result_string = '';
+//Obtener el valor de Mondrian
+var fact = value;
+function formatDollar(num) {
+var p = num.toFixed(2).split(".");
+return "$" + p[0].split("").reverse().reduce(function(acc,num,i,orig)
+{
+return num=="-" ? acc : num + (i && !(i % 3) ? "," : "") + acc;
+}, "") + "." + p[1];
+}
+result_string = formatDollar(fact);
+return result_string;
+]]>
+</Script>
+</CellFormatter>
+    </Measure>
+    <Measure name="Supply time" column="supply_time" datatype="Numeric" aggregator="sum" visible="true">
+      <CellFormatter>
+<Script language="JavaScript">
+<![CDATA[
+result_string = '';
+//Obtener el valor de Mondrian
+var fact = value;
+function formatDollar(num) {
+var p = num.toFixed(2).split(".");
+return "$" + p[0].split("").reverse().reduce(function(acc,num,i,orig)
+{
+return num=="-" ? acc : num + (i && !(i % 3) ? "," : "") + acc;
+}, "") + "." + p[1];
+}
+result_string = formatDollar(fact);
+return result_string;
+]]>
+</Script>
+</CellFormatter>
+    </Measure>
+    <Measure name="Store invoice" column="store_invoice" datatype="Numeric" aggregator="sum" visible="true">
+      <CellFormatter>
+<Script language="JavaScript">
+<![CDATA[
+result_string = '';
+//Obtener el valor de Mondrian
+var fact = value;
+function formatDollar(num) {
+var p = num.toFixed(2).split(".");
+return "$" + p[0].split("").reverse().reduce(function(acc,num,i,orig)
+{
+return num=="-" ? acc : num + (i && !(i % 3) ? "," : "") + acc;
+}, "") + "." + p[1];
+}
+result_string = formatDollar(fact);
+return result_string;
+]]>
+</Script>
+</CellFormatter>
+    </Measure>
+  </Cube>
+</Schema>

@@ -1,0 +1,211 @@
+
+-- ============================================================== --
+--  INTRODUCCIÓN A MDX
+-- ============================================================== --
+
+
+
+
+-- ============================================================== --
+--  Este es un comentario
+/*
+Aquí también hay comentarios pero
+están repartidos en renglones.
+*/
+-- ============================================================== --
+
+
+
+
+-- ============================================================== --
+--  CONSULTA I
+
+select
+from [Adventure Works];
+
+--  ¿Por cuáles dimensiones y con qué nivel esta consultando aquí?
+-- RESPUESTA.
+-- ============================================================== --
+
+Se esta consultando a partir de [Measures][Reseller Sales Amount], ya que el hecho por omisión es 'Ventas por distribuidor' (reseller sales amount). La dimensión sería "Measures" y  se presentar‡ el total de todas ellas juntos.
+El nivel es all, pues no especificamos alguna fecha o una granularidad diferente.
+
+-- ============================================================== --
+--  CONSULTA II
+
+select
+from   [Adventure Works]
+where  [Measures].[Internet Sales Amount];
+
+--  ¿En qué difiere la consulta anterior de esta?, ¿cuál es la medida
+--  por omisión?
+-- RESPUESTA.
+-- ============================================================== --
+Ahora se estará consultando a partir de [Measures][Internet Sales Amount] ya que se especifica en el where. Además la
+medida es 'Internet Sales Amount'. Como dijimos en la Consulta 1, la medida por omisión es "Reseller Sales Amount". 
+
+
+-- ============================================================== --
+--  CONSULTA III
+
+select [Measures].[Internet Sales Amount] on columns
+from   [Adventure Works];
+
+--  ¿En qué difiere la consulta anterior de esta?
+-- RESPUESTA.
+-- ============================================================== --
+
+Esta consulta solo entregara el resultado en una celda de todas las ventas de internet, ya que no restringe como tal
+una rabanada del cubo. 
+Pero la consulta anterior es posible hacer más operaciones, aparte de que en la consulta anterior s—lo te arrojaba el resultado, aqui aparecer‡ un encabezado con el nombre de la medida. 
+
+
+-- ============================================================== --
+--  CONSULTA IV
+
+select {[Date].[Calendar].[Calendar Year], [Date].[Calendar]} on columns
+from [Adventure Works];
+
+--  ¿Qué ocurre?, ¿es obligatorio el uso de llaves?
+-- RESPUESTA.
+-- ============================================================== --
+
+Se obtiene el acumulado de ventas por distribuidor (pues es la medida por omisi—n) de todos los periodos por 
+columnas. Incluyendo el all(El total de todos.).
+Si son necesarias las llaves, esto para poder construir el conjunto.
+-- ============================================================== --
+--  CONSULTA V
+
+select {[Date].[Calendar].[Calendar Year],[Date].[Calendar]} on columns,
+	   {[Product].[Product Categories].[Category]} on rows
+from   [Adventure Works];
+
+--  Dos dimensiones en dos ejes, pero dos ejes soportan más de dos dimensiones.
+--  crossjoin ayuda a meter más de una dimensión en un eje (anidando)
+--  ¿Sólo se pueden dos dimensiones en un cubo?, ¿tres?, ¿más?
+-- RESPUESTA.
+-- ============================================================== --
+
+Los cubos pueden tener las dimensiones que se quiera, pueden ser n dimensiones pues no hay un l’mite, pero los m‡s comunes son los de 2, 3 y 4 por lo que hemos visto en clase. 
+
+
+
+-- ============================================================== --
+--  CONSULTA VI
+
+--  ¿Qué medida se está mostrando?, ¿dimensión o jerarquía en la consulta?,
+--  ¿cuántos niveles tiene la jerarquía?, ¿qué nivel se muestra por omisión?, ¿all?
+select [Geography] on columns
+from   [Adventure Works]
+where  [Measures].[Internet Sales Amount];
+-- RESPUESTA.
+-- ============================================================== --
+
+Se mostrar‡ la medida Ventas por internet pues se esta especificando en el WHERE. Ya que Geograf’a solo tiene una jerarqu’a si se puede hacer esta consulta y se mostrara el all de esta dimensi—n.  
+
+
+
+-- ============================================================== --
+--  CONSULTA VII
+
+--  ¿Es posible ejecutar esta consulta?
+select [Product] on columns
+from   [Adventure Works];
+-- RESPUESTA.
+
+--  ¿Qué ocurre y por qué?, ¿cómo se podría resolver?
+-- RESPUESTA.
+-- ============================================================== --
+
+No se puede ejecutar esta consulta. Porque la dimensi—n Product tiene dos jerarqu’as y siempre se debe de especificar la jerarqu’a en la que se quiere trabajar. Para resolverlo bastar’a con a–adir el nombre de la jerarqu’a en la que se quiere consultar. 
+
+
+-- ============================================================== --
+--  Consulta VIII
+
+--  ¿Cuál es la diferencia entre estas consultas?
+select [Product].[Product Categories].members on columns
+from   [Adventure Works];
+
+select [Date].[Calendar].members on columns
+from [Adventure Works];
+
+select [Product].[Category].members on columns
+from   [Adventure Works];
+-- RESPUESTA.
+-- ============================================================== --
+
+Los miembros de cada consulta son de una jerarquía diferente y de una dimensión diferente.
+
+
+-- ============================================================== --
+--  Consulta IX
+
+select [Product].[Product Categories].members on columns
+from   [Adventure Works];
+
+--  ¿La consulta anterior arroja todos los miembros de la jerarquía?
+-- RESPUESTA.
+
+
+-- ¿Se puede mostrar el resultado en las filas usando "on rows"?, ¿por qué?
+-- RESPUESTA.
+-- ============================================================== --
+
+Si, arroja todos los miembros.
+No se puede, ya que siempre debe comenzar con COLUMNS, pues as’ es la regla de MDX, despuŽs de utilizar COLUMNS puedes usar ROWS. 
+
+
+-- ============================================================== --
+--  Consulta X: Uso de crossjoin
+--   Bosqueje el resultado arrojado por la siguiente consulta:
+select [Measures].[Internet Sales Amount]                 on columns,
+       crossjoin([Date].[Calendar].[Calendar Year],
+	             [Product].[Product Categories].Category) on rows
+from   [Adventure Works];
+-- ============================================================== --
+
+----------------------------------------------------
+	|						Internet Sales Amount
+2001|accesorios                     numero_ventas
+2001|Bicicleta						numero_ventas
+2001|Prenda							numero_ventas
+2001|Componente						numero_ventas
+2002|accesorios						numero_ventas
+2002|Bicicleta						numero_ventas
+2002|Prenda							numero_ventas
+2002|Componente						numero_ventas
+
+
+-- ============================================================== --
+--  Consulta XI: Miembros calculados.
+--   Crear una consulta MDX que muestre un descuento del 20% en todos
+--  los productos (con respecto a la medida Internet Sales Amount).
+-- ============================================================== --
+
+WITH MEMBER [Measures].[20% descuento] AS
+			[Measures].[20. * Product.Category.[All products]]
+
+SELECT
+	{[Measures].[Internet Sales Amount]} ON COLUMNS,
+	{Product.Category.Products.MEMBERS} ON ROWS
+	FROM [Adventure works];
+	
+
+
+
+-- ============================================================== --
+--  Consulta XII: Miembros calculados.
+--   Crear una consulta MDX que permita conocer el porcentaje de
+--  accesorios vendidos por año. 
+-- ============================================================== --
+
+WITH MEMBER
+	Product.Category.[All products].[% ventas accesorios] AS
+	(Product.Category.Accessories/Product.Category.[All products]),
+	format_string = "percent"
+
+SELECT
+	DATE.[Calendar year].members ON COLUMNS,
+	Product.Category.Category.ALLMEMBERS ON ROWS
+FROM [Adventure works]

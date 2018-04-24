@@ -1,0 +1,171 @@
+//1. Obtener la cantidad de artículos vendidos.
+
+SELECT [Measures].[Unit Sales] ON COLUMNS
+FROM [Foodmart];
+
+//2. Obtener la cantidad de artículos vendidos y de ventas en los años 2014 y 2015.
+
+SELECT {[Measures].[Unit Sales], [Measures].[Store Sales]} ON COLUMNS,
+		{[Tiempo].[Calendario].[The Year].[2014], [Tiempo].[Calendario].[The Year].[2015]} ON ROWS
+FROM [Foodmart];
+
+//3. Obtener el total de ventas en los años 2014 y 2015, en dos departamentos que elijas.
+
+SELECT {[Product].[Product Department].Dairy, [Product].[Product Department].Deli} ON COLUMNS,
+		{[Tiempo].[Calendario].[The Year].[2014], [Tiempo].[Calendario].[The Year].[2015]} ON ROWS
+FROM [Foodmart]
+where [Measures].[Store Sales];
+
+//4. Obtener el total de ventas por país y por categoría de productos.
+
+SELECT  [Store].[Store Country].MEMBERS ON COLUMNS,
+		[Product].[Product Category].MEMBERS ON ROWS
+FROM [Foodmart]
+WHERE [Measures].[Store Sales];
+
+//5. Obtener el total de ventas por año de cada departamento.
+
+SELECT  [Tiempo].[Calendario].[The Year].MEMBERS ON COLUMNS,
+		[Product].[Product Department].MEMBERS ON ROWS
+FROM [Foodmart]
+WHERE [Measures].[Store Sales];
+
+//6. Obtener el total de ventas trimestales de 2014 para cada categoría de productos.
+
+SELECT  [Tiempo].[Calendario].[The Year].[2014].CHILDREN ON COLUMNS,
+		[Product].[Product Category].MEMBERS ON ROWS
+FROM [Foodmart]
+WHERE [Measures].[Store Sales];
+
+//7. Obtener el total de ventas trimestales para cada categoría de producto
+//ignorando las categorías y años/trimestres en las que no haya información.
+
+SELECT NON EMPTY [Tiempo].[Calendario].[The Year].[2014].CHILDREN ON COLUMNS,
+		NON EMPTY [Product].[Product Category].MEMBERS ON ROWS
+FROM [Foodmart]
+WHERE [Measures].[Store Sales];
+
+//8. Unidades vendidas en 2014 en todas las tiendas de Estados Unidos en productos
+// para repostería.
+
+//No se cual es la traducción de reposteria, asi que use otro.
+SELECT [Product].[Product Category].[Baking Goods] ON COLUMNS,
+		CROSSJOIN([Store].[Store Country].[USA], 
+			[Tiempo].[Calendario].[The Year].[2014]) ON ROWS
+FROM [Foodmart]
+WHERE [Measures].[Unit Sales];
+
+//9. Obtener el total de ventas para cada año, de los clientes que viven en Estados
+// Unidos o en Canadá y compraron bebidas alcohólicas.
+
+SELECT [Tiempo].[Calendario].[The Year].MEMBERS ON COLUMNS,
+		{[Customer].[Country].[USA], [Customer].[Country].[Canada]} ON ROWS
+FROM [Foodmart]
+WHERE ({[Product].[Product Category].[Drinks]}, [Measures].[Store Sales]);
+
+//10. Obtener total de ventas por producto en las tiendas de las ciudades cuyo nombre
+//está entre Beverly Hills y San Francisco ordenanas en forma ascendente, por el total
+//de ventas. Ignorar nulos y la jerarquía.
+
+SELECT NON EMPTY ORDER([Product].[Productos].MEMBERS, [Measures].[Store Sales], ASC) ON COLUMNS
+FROM [Foodmart]
+WHERE ([Measures].[Store Sales], {[Store].[Tiendas].[Store City].[Beverly Hills] : [Store].[Tiendas].[Store City].[San Francisco]});
+
+//11. Usando un cross join, Obtener el total de unidades vendidas por categoría de productos en las tiendas
+// de cada país, agrupar por estado. Eliminando nulos.
+
+SELECT NON EMPTY [Store].[Store State].MEMBERS ON COLUMNS,
+	NON EMPTY CROSSJOIN([Product].[Product Category].MEMBERS,
+	[Store].[Store Country].MEMBERS) ON ROWS
+FROM [Foodmart]
+WHERE [Measures].[Unit Sales];
+
+//12. Obtener información de los 10 productos más vendidos en el primer trimestre de 2015 pero que en el segundo 
+//trimeste ya no estuvieron entre los 10 más vendidos.
+
+SELECT [Measures].[Store Sales] ON COLUMNS,
+	EXCEPT(
+		TOPCOUNT([Product].[Productos].MEMBERS, 
+		10, 
+		([Measures].[Store Sales], 
+			[Tiempo].[Calendario].[The Year].[2015].Q1)),
+		TOPCOUNT([Product].[Productos].MEMBERS, 
+		10, 
+		([Measures].[Store Sales], 
+			[Tiempo].[Calendario].[The Year].[2015].Q2))) ON ROWS
+FROM [Foodmart];
+	
+//13. Obtener el porcentaje de ganancia de bebidas vendidas en 2014.
+
+WITH MEMBER
+	[Product].[Product Category].[% vendidas] AS
+	([Product].[Product Category].[Drinks]/[Product].[Product Category].[All]),
+	format_string = "percent"
+
+SELECT [Product].[Product Category].[% vendidas] ON COLUMNS,
+	[Tiempo].[Calendario].[The Year].[2014] ON ROWS
+FROM [Foodmart]
+WHERE [Measures].[Store Sales];
+
+//14. Obtener el total de ventas en Estados Unidos en los años 2002 a 2005(o tres años que haya en el cubo) de las
+//diferenes categorías de productos. Escribe la consulta utilizando una rebanada.
+
+SELECT [Product].[Product Category].MEMBERS ON COLUMNS
+FROM [Foodmart]
+WHERE ([Measures].[Store Sales], 
+	[Store].[Tiendas].[Store Country].[USA], 
+	{[Tiempo].[Calendario].[The Year].[2002] : [Tiempo].[Calendario].[The Year].[2005]});
+
+//La consulta anterior no regresa resultados ya que el intervalo de tiempo no tiene datos, con el siguiente intervalo
+//muestra resultados ya que si existe el intervalo de tiempo.
+
+SELECT [Product].[Product Category].MEMBERS ON COLUMNS
+FROM [Foodmart]
+WHERE ([Measures].[Store Sales], 
+	[Store].[Tiendas].[Store Country].[USA], 
+	{[Tiempo].[Calendario].[The Year].[2014] : [Tiempo].[Calendario].[The Year].[2016]});
+
+//15. Obtener el total de ventas en Estados Unidos en los años 2002 a 2005(o tres años que haya en el cubo) de las
+//diferentes categorías de productos. Escribe una consulta sin utilizar una rebanada.
+
+SELECT UNION(([Measures].[Store Sales], [Tiempo].[Calendario].[The Year].[2002], [Store].[Tiendas].[Store Country].[USA]),
+([Measures].[Store Sales], [Tiempo].[Calendario].[The Year].[2003], [Store].[Tiendas].[Store Country].[USA]),
+([Measures].[Store Sales], [Tiempo].[Calendario].[The Year].[2004], [Store].[Tiendas].[Store Country].[USA]),
+([Measures].[Store Sales], [Tiempo].[Calendario].[The Year].[2005], [Store].[Tiendas].[Store Country].[USA])) ON COLUMNS,
+[Product].[Product Category].MEMBERS ON ROWS
+FROM [Foodmart];
+
+//La consulta anterior no regresa resultados ya que el intervalo de tiempo no tiene datos, con el siguiente intervalo
+//muestra resultados ya que si existe el intervalo de tiempo.
+
+
+SELECT UNION(([Measures].[Store Sales], [Tiempo].[Calendario].[The Year].[2014], [Store].[Tiendas].[Store Country].[USA]),
+([Measures].[Store Sales], [Tiempo].[Calendario].[The Year].[2015], [Store].[Tiendas].[Store Country].[USA]),
+([Measures].[Store Sales], [Tiempo].[Calendario].[The Year].[2016], [Store].[Tiendas].[Store Country].[USA])) ON COLUMNS,
+[Product].[Product Category].MEMBERS ON ROWS
+FROM [Foodmart];
+
+//16. Crea un método calculado para obtener el total de ganancias por año. Muestra su funcionamiento en una consulta.
+
+WITH MEMBER
+	[Measures].[total] AS
+	[Measures].[Unit Sales] + [Measures].[Store Sales]
+
+SELECT [Tiempo].[Calendario].[The Year].MEMBERS ON COLUMNS,
+	[Measures].[total] ON ROWS
+FROM [Foodmart];
+
+//17. Crea un miembro calculado con el promedio anual de ventas, de los años registrados. Escribir una consulta que
+//muestre el total de ventas por año y el prmedio de esos años.
+
+WITH MEMBER
+	[Measures].[promedio] AS
+	([Measures].[Unit Sales] + [Measures].[Store Sales])/12
+
+	MEMBER
+	[Measures].[total] AS
+	[Measures].[Unit Sales] + [Measures].[Store Sales]
+
+SELECT [Tiempo].[Calendario].[The Year].MEMBERS ON COLUMNS,
+	{[Measures].[promedio], [Measures].[total]} ON ROWS
+FROM [Foodmart];

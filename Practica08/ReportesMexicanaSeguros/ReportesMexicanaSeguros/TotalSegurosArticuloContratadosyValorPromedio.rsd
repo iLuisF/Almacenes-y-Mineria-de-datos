@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SharedDataSet xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/shareddatasetdefinition">
+  <DataSet Name="">
+    <Query>
+      <DataSourceReference>MexicanaSeguros</DataSourceReference>
+      <CommandText>WITH MEMBER [Measures].[Valor promedio] AS [Measures].[Valor Bien] / [Measures].[Cantidad de seguros de articulo contratados] SELECT NON EMPTY { [Measures].[Valor promedio], [Measures].[Cantidad de seguros de articulo contratados] } ON COLUMNS, NON EMPTY { ([Dimension Seguro Articulo C].[Creacion].[Pais].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_UNIQUE_NAME ON ROWS FROM [MexicanaSeguros] CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</CommandText>
+      <rd:DesignerState><QueryDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/AnalysisServices/QueryDefinition"><CommandType>MDX</CommandType><QuerySpecification xsi:type="MDXQuerySpecification"><Select><Items><Item><ID xsi:type="Level"><DimensionName>Dimension Seguro Articulo C</DimensionName><HierarchyName>Creacion</HierarchyName><HierarchyUniqueName>[Dimension Seguro Articulo C].[Creacion]</HierarchyUniqueName><LevelName>Pais</LevelName><UniqueName>[Dimension Seguro Articulo C].[Creacion].[Pais]</UniqueName></ID><ItemCaption>Pais</ItemCaption><UniqueName>true</UniqueName></Item><Item><ID xsi:type="Measure"><MeasureName>Cantidad de seguros de articulo contratados</MeasureName><UniqueName>[Measures].[Cantidad de seguros de articulo contratados]</UniqueName></ID><ItemCaption>Cantidad de seguros de articulo contratados</ItemCaption><BackColor>true</BackColor><ForeColor>true</ForeColor><FontFamily>true</FontFamily><FontSize>true</FontSize><FontWeight>true</FontWeight><FontStyle>true</FontStyle><FontDecoration>true</FontDecoration><FormattedValue>true</FormattedValue><FormatString>true</FormatString></Item><Item><ID xsi:type="Measure"><MeasureName>Valor promedio</MeasureName><UniqueName>[Measures].[Valor promedio]</UniqueName></ID><ItemCaption>Valor promedio</ItemCaption><BackColor>true</BackColor><ForeColor>true</ForeColor><FontFamily>true</FontFamily><FontSize>true</FontSize><FontWeight>true</FontWeight><FontStyle>true</FontStyle><FontDecoration>true</FontDecoration><FormattedValue>true</FormattedValue><FormatString>true</FormatString></Item></Items></Select><From>MexicanaSeguros</From><Filter><FilterItems /></Filter><Calculations><Calculation><ID>[Valor promedio]</ID><Name>Valor promedio</Name><ParentUniqueName>[Measures]</ParentUniqueName><Expression>[Measures].[Valor Bien] / [Measures].[Cantidad de seguros de articulo contratados]</Expression></Calculation></Calculations><Aggregates /><QueryProperties /></QuerySpecification><Query><Statement>WITH MEMBER [Measures].[Valor promedio] AS [Measures].[Valor Bien] / [Measures].[Cantidad de seguros de articulo contratados] SELECT NON EMPTY { [Measures].[Valor promedio], [Measures].[Cantidad de seguros de articulo contratados] } ON COLUMNS, NON EMPTY { ([Dimension Seguro Articulo C].[Creacion].[Pais].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_UNIQUE_NAME ON ROWS FROM [MexicanaSeguros] CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</Statement><ParameterDefinitions /></Query></QueryDefinition></rd:DesignerState>
+    </Query>
+    <Fields>
+      <Field Name="Pais">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dimension Seguro Articulo C].[Creacion].[Pais]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Cantidad_de_seguros_de_articulo_contratados">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[Cantidad de seguros de articulo contratados]" /&gt;</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="Valor_promedio">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[Valor promedio]" /&gt;</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+    </Fields>
+  </DataSet>
+</SharedDataSet>

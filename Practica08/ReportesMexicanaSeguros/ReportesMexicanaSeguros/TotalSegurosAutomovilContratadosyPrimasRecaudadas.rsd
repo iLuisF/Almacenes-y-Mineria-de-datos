@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SharedDataSet xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/shareddatasetdefinition">
+  <DataSet Name="">
+    <Query>
+      <DataSourceReference>MexicanaSeguros</DataSourceReference>
+      <CommandText> SELECT NON EMPTY { [Measures].[Prima], [Measures].[Numero Accidentes], [Measures].[Cantidad de seguros de automovil contratados] } ON COLUMNS, NON EMPTY { ([Tiempo].[LineaTiempo].[Año].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_UNIQUE_NAME ON ROWS FROM [MexicanaSeguros] CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</CommandText>
+      <rd:DesignerState><QueryDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/AnalysisServices/QueryDefinition"><CommandType>MDX</CommandType><QuerySpecification xsi:type="MDXQuerySpecification"><Select><Items><Item><ID xsi:type="Level"><DimensionName>Tiempo</DimensionName><HierarchyName>LineaTiempo</HierarchyName><HierarchyUniqueName>[Tiempo].[LineaTiempo]</HierarchyUniqueName><LevelName>Año</LevelName><UniqueName>[Tiempo].[LineaTiempo].[Año]</UniqueName></ID><ItemCaption>Año</ItemCaption><UniqueName>true</UniqueName></Item><Item><ID xsi:type="Measure"><MeasureName>Cantidad de seguros de automovil contratados</MeasureName><UniqueName>[Measures].[Cantidad de seguros de automovil contratados]</UniqueName></ID><ItemCaption>Cantidad de seguros de automovil contratados</ItemCaption><BackColor>true</BackColor><ForeColor>true</ForeColor><FontFamily>true</FontFamily><FontSize>true</FontSize><FontWeight>true</FontWeight><FontStyle>true</FontStyle><FontDecoration>true</FontDecoration><FormattedValue>true</FormattedValue><FormatString>true</FormatString></Item><Item><ID xsi:type="Measure"><MeasureName>Prima</MeasureName><UniqueName>[Measures].[Prima]</UniqueName></ID><ItemCaption>Prima</ItemCaption><BackColor>true</BackColor><ForeColor>true</ForeColor><FontFamily>true</FontFamily><FontSize>true</FontSize><FontWeight>true</FontWeight><FontStyle>true</FontStyle><FontDecoration>true</FontDecoration><FormattedValue>true</FormattedValue><FormatString>true</FormatString></Item><Item><ID xsi:type="Measure"><MeasureName>Numero Accidentes</MeasureName><UniqueName>[Measures].[Numero Accidentes]</UniqueName></ID><ItemCaption>Numero Accidentes</ItemCaption><BackColor>true</BackColor><ForeColor>true</ForeColor><FontFamily>true</FontFamily><FontSize>true</FontSize><FontWeight>true</FontWeight><FontStyle>true</FontStyle><FontDecoration>true</FontDecoration><FormattedValue>true</FormattedValue><FormatString>true</FormatString></Item></Items></Select><From>MexicanaSeguros</From><Filter><FilterItems /></Filter><Calculations /><Aggregates /><QueryProperties /></QuerySpecification><Query><Statement> SELECT NON EMPTY { [Measures].[Prima], [Measures].[Numero Accidentes], [Measures].[Cantidad de seguros de automovil contratados] } ON COLUMNS, NON EMPTY { ([Tiempo].[LineaTiempo].[Año].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_UNIQUE_NAME ON ROWS FROM [MexicanaSeguros] CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</Statement><ParameterDefinitions /></Query></QueryDefinition></rd:DesignerState>
+    </Query>
+    <Fields>
+      <Field Name="Año">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Tiempo].[LineaTiempo].[Año]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Cantidad_de_seguros_de_automovil_contratados">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[Cantidad de seguros de automovil contratados]" /&gt;</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="Prima">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[Prima]" /&gt;</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="Numero_Accidentes">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[Numero Accidentes]" /&gt;</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+    </Fields>
+  </DataSet>
+</SharedDataSet>

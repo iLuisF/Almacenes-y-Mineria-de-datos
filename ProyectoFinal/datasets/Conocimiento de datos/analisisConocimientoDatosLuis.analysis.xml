@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<job xmlns="http://eobjects.org/analyzerbeans/job/1.0">
+    <job-metadata>
+        <job-description>Created with DataCleaner Community edition 5.1.5</job-description>
+        <author>Luis</author>
+        <updated-date>2018-06-03-05:00</updated-date>
+        <metadata-properties>
+            <property name="CoordinatesX.Desktop.heart.csv">216</property>
+            <property name="CoordinatesY.Desktop.heart.csv">236</property>
+        </metadata-properties>
+    </job-metadata>
+    <source>
+        <data-context ref="heart.csv"/>
+        <columns>
+            <column id="col_age" path="age" type="STRING"/>
+            <column id="col_sex" path="sex" type="STRING"/>
+            <column id="col_cp" path="cp" type="STRING"/>
+            <column id="col_trestbps" path="trestbps" type="STRING"/>
+            <column id="col_chol" path="chol" type="STRING"/>
+            <column id="col_fbs" path="fbs" type="STRING"/>
+            <column id="col_restecg" path="restecg" type="STRING"/>
+            <column id="col_thalach" path="thalach" type="STRING"/>
+            <column id="col_exang" path="exang" type="STRING"/>
+            <column id="col_oldpeak" path="oldpeak" type="STRING"/>
+            <column id="col_slope" path="slope" type="STRING"/>
+            <column id="col_ca" path="ca" type="STRING"/>
+            <column id="col_thal" path="thal" type="STRING"/>
+            <column id="col_num" path="num" type="STRING"/>
+        </columns>
+    </source>
+    <transformation/>
+    <analysis>
+        <analyzer>
+            <descriptor ref="String analyzer"/>
+            <metadata-properties>
+                <property name="CoordinatesY">315</property>
+                <property name="CoordinatesX">535</property>
+            </metadata-properties>
+            <properties/>
+            <input ref="col_age"/>
+            <input ref="col_sex"/>
+            <input ref="col_cp"/>
+            <input ref="col_trestbps"/>
+            <input ref="col_chol"/>
+            <input ref="col_fbs"/>
+            <input ref="col_restecg"/>
+            <input ref="col_thalach"/>
+            <input ref="col_exang"/>
+            <input ref="col_oldpeak"/>
+            <input ref="col_slope"/>
+            <input ref="col_ca"/>
+            <input ref="col_thal"/>
+            <input ref="col_num"/>
+        </analyzer>
+        <analyzer>
+            <descriptor ref="Value distribution"/>
+            <metadata-properties>
+                <property name="CoordinatesY">474</property>
+                <property name="CoordinatesX">425</property>
+            </metadata-properties>
+            <properties>
+                <property name="Record unique values" value="true"/>
+                <property name="Record drill-down information" value="true"/>
+                <property name="Top n most frequent values" value="&lt;null&gt;"/>
+                <property name="Bottom n most frequent values" value="&lt;null&gt;"/>
+            </properties>
+            <input ref="col_age" name="Column"/>
+            <input ref="col_sex" name="Column"/>
+            <input ref="col_cp" name="Column"/>
+            <input ref="col_trestbps" name="Column"/>
+            <input ref="col_chol" name="Column"/>
+            <input ref="col_fbs" name="Column"/>
+            <input ref="col_restecg" name="Column"/>
+            <input ref="col_thalach" name="Column"/>
+            <input ref="col_exang" name="Column"/>
+            <input ref="col_oldpeak" name="Column"/>
+            <input ref="col_slope" name="Column"/>
+            <input ref="col_ca" name="Column"/>
+            <input ref="col_thal" name="Column"/>
+            <input ref="col_num" name="Column"/>
+        </analyzer>
+    </analysis>
+</job>

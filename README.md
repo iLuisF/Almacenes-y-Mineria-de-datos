@@ -19,3 +19,12 @@ Desarrollo de un sistema de minería de datos, utilizando la **metodología CRIS
 10. Procesamiento de datos - limpieza, integración, reducción, transformación y discretización - usando **RStudio**. [Más información.](https://github.com/iLuisF/Almacenes-y-Mineria-de-datos/blob/master/Practica10/Practica10%5BAlumnos%5D.pdf "Más información.")
 11. Busqueda de patrones frecuentes dentro de un conjunto de datos e interpretación de los resultados; usando **reglas de asociación** y RStudio. [Más información.](https://github.com/iLuisF/Almacenes-y-Mineria-de-datos/blob/master/Practica11/Practica11%5BAlumnos%5D.pdf "Más información.").
 12. Busqueda de patrones frecuentes dentro de un conjunto de datos e interpretación de los resultados; usando **reglas de asociación** y RStudio. [Más información.](https://github.com/iLuisF/Almacenes-y-Mineria-de-datos/blob/master/Practica12/Practica12%5BAlumnos%5D.pdf "Más información.").
+13. Cración de agrupamientos (clustering) de datos utilizando el algoritmo de k-medoids en R Studio. [Más información.](https://github.com/iLuisF/Almacenes-y-Mineria-de-datos/blob/master/Practica13/Practica13%5BAlumnos%5D.pdf "Más información.")
+
+## Tareas ##
+
+1. Conceptos sobre bases de datos, almacenes de datos y mineria de datos.
+2. Uso del proceso ETL, y uso de **Open Refine**. [Más información.](https://github.com/iLuisF/Almacenes-y-Mineria-de-datos/blob/master/Tarea02/Tarea2_ETL(Basico).pdf "Más información.")
+3. Diseño de un **almacén de datos** usando la metodología de Kimball.
+4. Creación de un **cubo MOLAP** y un **cubo ROLAP**.
+5. **Consultas MDX**.
